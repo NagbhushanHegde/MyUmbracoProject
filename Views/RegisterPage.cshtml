@@ -1,0 +1,58 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyUmbracoProject.Models
+@using MyUmbracoProject.Controller
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="form-card">
+        <h2>Register</h2>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div style="color:red; margin-bottom:1rem;">
+                @Html.ValidationSummary(false)
+            </div>
+        }
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div style="color:green; margin-bottom:1rem;">@TempData["SuccessMessage"]</div>
+        }
+
+        @using (Html.BeginUmbracoForm<AuthSurfaceController>("HandleRegister"))
+        {
+            
+
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input id="Name" name="Name" class="form-field" type="text" placeholder="Enter your name" />
+                @Html.ValidationMessage("Name", new { style = "color:red; font-size:0.85rem;" })
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input id="Email" name="Email" class="form-field" type="email" placeholder="Enter your email" />
+                @Html.ValidationMessage("Email", new { style = "color:red; font-size:0.85rem;" })
+            </div>
+
+            <div class="form-group">
+                <label for="City">City</label>
+                <input id="City" name="City" class="form-field" type="text" placeholder="Enter your city" />
+            </div>
+
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input id="Password" name="Password" class="form-field" type="password" placeholder="Enter password" />
+                @Html.ValidationMessage("Password", new { style = "color:red; font-size:0.85rem;" })
+            </div>
+
+            <button type="submit" class="form-button">Register</button>
+        }
+
+        <p class="form-help">Already have an account? <a href="/login">Login</a></p>
+    </div>
+</div>

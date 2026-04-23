@@ -1,0 +1,37 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    @await Html.PartialAsync("Partials/_Navbar", Model)
+
+    <section id="info" class="section hero">
+        <div class="section-inner">
+            <h1 class="section-title">@Model.Value("infoTitle")</h1>
+            <p class="section-text">@Model.Value("infoDescription")</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-inner">
+            <h2 class="section-title">@Model.Value("aboutTitle")</h2>
+            <p class="section-text">@Model.Value("aboutDescription")</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-inner">
+            <h2 class="section-title">@Model.Value("contactTitle")</h2>
+            <p class="section-text">@Model.Value("contactDescription")</p>
+
+            @* ── Contact Form ── *@
+            @await Html.PartialAsync("Partials/_ContactForm")
+        </div>
+    </section>
+
+    @await Html.PartialAsync("Partials/_Footer", Model)
+</div>

@@ -1,0 +1,15 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(Model?.Value("siteTitle")?.ToString() ?? "My Umbraco Site")</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="site-shell">
+        @RenderBody()
+    </div>
+</body>
+</html>

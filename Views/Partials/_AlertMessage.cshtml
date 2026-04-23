@@ -1,0 +1,9 @@
+﻿
+@if (TempData["SuccessMessage"] != null)
+{
+    <div style="color:green; margin-bottom:1rem;">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div style="color:red; margin-bottom:1rem;">@TempData["ErrorMessage"]</div>
+}

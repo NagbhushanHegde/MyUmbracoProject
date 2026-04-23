@@ -1,0 +1,33 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyUmbracoProject.Controller
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@await Html.PartialAsync("Partials/_AlertMessage")
+
+@using (Html.BeginUmbracoForm<ContactSurfaceController>("HandleContact"))
+{
+    <div class="form-group">
+        <label>Name</label>
+        <input name="Name" class="form-field" type="text"
+               placeholder="Your name"
+               value="@(User.Identity!.IsAuthenticated ? User.Identity.Name : "")" />
+        @Html.ValidationMessage("Name", new { style = "color:red; font-size:0.85rem;" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input name="Email" class="form-field" type="email"
+               placeholder="Your email" />
+        @Html.ValidationMessage("Email", new { style = "color:red; font-size:0.85rem;" })
+    </div>
+
+    <div class="form-group">
+        <label>Message</label>
+        <textarea name="Message" class="form-field"
+                  rows="4" placeholder="Your message"
+                  style="resize:vertical;"></textarea>
+        @Html.ValidationMessage("Message", new { style = "color:red; font-size:0.85rem;" })
+    </div>
+
+    <button type="submit" class="form-button">Send Message</button>
+}
